@@ -32,7 +32,7 @@ double[] FillArray(int size, double min, double max)
     Random random = new Random();
     for (int i = 0; i < arr.Length; i++)
     {
-        arr[i] = Math.Round(min + random.NextDouble() * max, 2);;
+        arr[i] = Math.Round(min + random.NextDouble() * (max - min), 2);;
     }
     return arr;
 }
@@ -61,6 +61,6 @@ void FindDiffMaxMin(double[] arr)
 {
     double min = FindMin(arr);
     double max = FindMax(arr);
-    double result = max - min;
+    double result = Math.Round(max - min, 2);
     Console.WriteLine($"{max} - {min} = {result}");
 }
