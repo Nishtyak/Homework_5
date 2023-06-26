@@ -3,7 +3,7 @@
 
 int size = EnterNumberInt("Введите размер массива: ");
 double min = EnterNumberDouble("Введите минимальное число: ");
-double max = EnterNumberDouble("Введите максимальное число: ");
+double max = EnterNumberDouble("Введите максимальное число: ") + 1;
 double[] array = FillArray(size, min, max);
 PrintArray(array);
 FindDiffMaxMin(array);
@@ -41,15 +41,14 @@ double[] FillArray(int size, double min, double max)
     Random random = new Random();
     for (int i = 0; i < arr.Length; i++)
     {
-        arr[i] = Math.Round(min + ((max - min) * random.NextDouble()), 2);
-        //arr[i] = Math.Round(random.NextDouble(), 2);
+        arr[i] = Math.Round(min + random.NextDouble() * (max - min), 2);;
     }
     return arr;
 }
 
 double FindMin(double[] arr)
 {
-    double min = arr[0];
+    var min = arr[0];
     foreach (var el in arr)
     {
         if(el < min) min = el;
@@ -59,7 +58,7 @@ double FindMin(double[] arr)
 
 double FindMax(double[] arr)
 {
-    double max = arr[0];
+    var max = arr[0];
     foreach (var el in arr)
     {
         if(el > max) max = el;
@@ -69,8 +68,8 @@ double FindMax(double[] arr)
 
 void FindDiffMaxMin(double[] arr)
 {
-    double min = FindMin(arr);
-    double max = FindMax(arr);
-    double result = Math.Round(max - min, 2);
+    var min = FindMin(arr);
+    var max = FindMax(arr);
+    var result = Math.Round(max - min, 2);
     Console.WriteLine($"{max} - {min} = {result}");
 }
